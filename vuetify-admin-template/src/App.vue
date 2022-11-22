@@ -5,10 +5,10 @@
       color="primary"
       dark
     >
+      <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-toolbar-title>Page Layout</v-toolbar-title>
     </v-app-bar>
-    
-    <v-navigation-drawer app>
+    <v-navigation-drawer v-model="drawer" app>
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
@@ -44,9 +44,10 @@
     </v-navigation-drawer>
 
     <v-main>
-      <router-view/>
+      <v-container fluid>
+        <router-view/>
+      </v-container>
     </v-main>
-
   </v-app>
 </template>
 
@@ -55,14 +56,14 @@
 export default {
   name: 'App',
 
-  data () {
-    return {
-      items: [
-        { title: 'Dashboard', icon: 'mdi-view-dashboard', to: '/'},
-        { title: 'Grid System', icon: 'mdi-view-dashboard', to: '/grid-system'},
-      ],
-      right: null,
-    }
-  }, 
+  data: () => ({
+    drawer: false,
+    items: [
+      { title: 'Dashboard', icon: 'mdi-view-dashboard', to: '/'},
+      { title: 'Grid System', icon: 'mdi-image', to: '/grid-system'},
+      { title: 'Grid List Page', icon: 'mdi-image', to: '/grid-list-page'},
+    ],
+    right: null,
+  }), 
 };
 </script>
